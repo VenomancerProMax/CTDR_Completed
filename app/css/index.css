@@ -199,3 +199,21 @@ input[type=number]::-webkit-inner-spin-button {
 .hidden {
   display: none;
 }
+
+textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 8px;
+  border: 1px solid #CCCCCC;
+  border-radius: 5px;
+  font-size: 12px;
+  background-color: #fff;
+  resize: vertical;
+  font-family: 'Lato', Arial, sans-serif;
+  appearance: none;
+}
+
+textarea:focus {
+  outline: none;
+  border-color: #CCCCCC;
+}
