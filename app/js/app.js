@@ -96,6 +96,11 @@ async function uploadFileToCRM() {
   });
 }
 
+
+function complete_trigger() {
+  ZOHO.CRM.BLUEPRINT.proceed();
+}
+
 function hideUploadBuffer() {
   const buffer = document.getElementById("upload-buffer");
   if (buffer) buffer.classList.add("hidden");
