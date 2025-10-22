@@ -105,10 +105,6 @@ async function uploadFileToCRM() {
 }
 
 
-function complete_trigger() {
-  ZOHO.CRM.BLUEPRINT.proceed();
-}
-
 function hideUploadBuffer() {
   const buffer = document.getElementById("upload-buffer");
   if (buffer) buffer.classList.add("hidden");
@@ -176,7 +172,7 @@ async function update_record(event = null) {
     });
 
     // Pass ALL required data to the Deluge function via JSON string
-    const func_name = "ta_ctdr_complete_the_process_update_account";
+    const func_name = "ta_ctdr_complete_to_auth_update_account";
     const req_data = {
         "arguments": JSON.stringify({
             "account_id": safe_account_id,
