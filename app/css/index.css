@@ -4,7 +4,6 @@
   padding: 0;
   font-family: 'Lato', Arial, sans-serif;
 }
-
 body {
   background-color: #f3f4f6;
   display: flex;
@@ -13,7 +12,6 @@ body {
   min-height: 100vh;
   position: relative;
 }
-
 .form-container {
   background-color: #fff;
   padding: 24px;
@@ -23,18 +21,18 @@ body {
   width: 100%;
   position: relative;
 }
-
-.form-container label:not(:first-of-type) {
-  margin-top: 16px;
+.form-container label {
   display: block;
   font-size: 12px;
   font-weight: 600;
+  margin-top: 16px;
+  color: #333;
 }
-
-input[type="text"],
-input[type="number"],
+.form-container label:first-of-type {
+  margin-top: 0;
+}
 input[type="date"],
-select {
+textarea {
   width: 100%;
   padding: 10px;
   margin-top: 8px;
@@ -42,71 +40,34 @@ select {
   border-radius: 5px;
   font-size: 12px;
   background-color: #fff;
-  appearance: none;
 }
-
-select:focus,
-input:focus {
-  outline: none;
-  /* box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.4); */
+textarea {
+  resize: vertical;
+  font-family: inherit;
 }
-
-input[type="file"] {
+#drop-zone {
   width: 100%;
-  padding: 8px 10px;
-  margin-top: 8px;
-  font-size: 12px;
-  border: 1px solid #ccc;
+  border: 2px dashed #ccc;
   border-radius: 5px;
-  background-color: #fff;
+  margin-top: 8px;
+  padding: 20px;
+  text-align: center;
+  cursor: pointer;
+  background: #fafafa;
+  font-size: 12px;
+  color: #666;
 }
-
+#drop-zone.dragover {
+  border-color: #4A90E2;
+  background: #f0f7ff;
+}
 .error-message {
   font-size: 12px;
   color: #d93025;
   margin-top: 4px;
   display: block;
+  min-height: 15px;
 }
-
-.input-group {
-  display: flex;
-  margin-top: 8px;
-}
-
-.input-group .currency {
-  background: #f0f0f0;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-right: none;
-  border-radius: 5px 0 0 5px;
-  font-size: 12px;
-  display: flex;
-  align-items: center;
-  white-space: nowrap;
-}
-
-.input-group input {
-  flex: 1;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 0 5px 5px 0;
-  font-size: 12px;
-  background-color: #fff;
-  margin: 0;
-  appearance: none;
-}
-
-/* Remove number input arrows/spinners */
-input[type=number] {
-  -moz-appearance: textfield; /* Firefox */
-}
-
-input[type=number]::-webkit-outer-spin-button,
-input[type=number]::-webkit-inner-spin-button {
-  -webkit-appearance: none; /* Chrome, Safari, Edge */
-  margin: 0;
-}
-
 .submit-button {
   margin-top: 20px;
   width: 100%;
@@ -117,13 +78,7 @@ input[type=number]::-webkit-inner-spin-button {
   border-radius: 5px;
   font-size: 16px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
 }
-
-.submit-button:hover {
-  background-color: #357ABD;
-}
-
 .close-button {
   position: absolute;
   top: 10px;
@@ -135,12 +90,6 @@ input[type=number]::-webkit-inner-spin-button {
   cursor: pointer;
   color: #555;
 }
-
-.close-button:hover {
-  color: #000;
-}
-
-/* UPLOAD BUFFER */
 .upload-overlay {
   position: fixed;
   inset: 0;
@@ -150,70 +99,53 @@ input[type=number]::-webkit-inner-spin-button {
   align-items: center;
   justify-content: center;
 }
-
 .upload-box {
   background: #fff;
   padding: 30px 40px;
   border-radius: 12px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
   text-align: center;
   width: 300px;
 }
-
-.upload-icon {
-  font-size: 40px;
-  margin-bottom: 15px;
-  color: #3498db;
-}
-
-.upload-title {
-  font-size: 18px;
-  font-weight: 500;
-  margin-bottom: 20px;
-}
-
 .progress-bar-background {
   width: 100%;
   height: 8px;
   background: #eee;
   border-radius: 5px;
   overflow: hidden;
+  margin-top: 15px;
 }
-
 .progress-bar-fill {
   height: 100%;
-  background: linear-gradient(90deg, #3498db, #2980b9);
+  background: #3498db;
   width: 0%;
-  transition: width 0.3s ease-in-out;
 }
-
 .progress-bar-fill.animate {
   animation: fillAnimation 2.5s ease-in-out forwards;
 }
-
 @keyframes fillAnimation {
   from { width: 0%; }
   to { width: 100%; }
 }
-
 .hidden {
-  display: none;
+  display: none !important;
 }
-
-textarea {
-  width: 100%;
-  padding: 10px;
-  margin-top: 8px;
-  border: 1px solid #CCCCCC;
-  border-radius: 5px;
-  font-size: 12px;
-  background-color: #fff;
-  resize: vertical;
-  font-family: 'Lato', Arial, sans-serif;
-  appearance: none;
+#custom-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
 }
-
-textarea:focus {
-  outline: none;
-  border-color: #CCCCCC;
+.modal-content {
+  background: #fff;
+  padding: 30px;
+  border-radius: 12px;
+  width: 320px;
+  text-align: center;
 }
+.success-title { color: #28a745; }
+.error-title { color: #dc3545; }
+.success-btn { background-color: #28a745 !important; }
+.error-btn { background-color: #dc3545 !important; }
